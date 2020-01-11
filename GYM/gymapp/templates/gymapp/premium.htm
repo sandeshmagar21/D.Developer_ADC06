@@ -24,29 +24,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
         body{
           background-color:rgb(8, 12, 12) ;
         }
-        .navbar-brand{
-            background-color:#FFCC33;
-            color:#000000;
-            border-width:5px;
-            border-color:#FFCC33;
-            border-style:solid;
-            border-spacing:30px;
-            border-radius: 5px;
-        }
-       
-
-
-
     </style>
 
     
 <nav class="navbar navbar-light" style="background-color: #00000093; border-width:14px;border-color:rgb(88, 88, 44);border-style:groove;border-spacing:30px;border-radius:5px;"class="navbar navbar-light">
-    <!-- <a href="#" class="navbar-brand" >Library App</a> -->
-    <!-- style="background-color:#FFCC33;color:#000000;border-width:10px;border-color:#FFCC33;border-style:solid;border-spacing:30px;border-radius: 5px;" -->
-    <!-- <a class="btn btn-outline-warning" href="{% url 'index' %}" >DataFlair</a> done--> 
-    <!-- style="background-color:#FFCC33;color:#000000;" -->
-<!-- <a href="{% url 'admin:index' %}" class = 'btn btn-outline-warning' >Admin</a> -->
-<!-- style="background-color:#FFCC33;color:#000000;" -->
 <div class="pos-f-t">
     <div class="dropdown-menu" id="navbarToggleExternalContent">
       <div class="bg-dark p-4">
@@ -69,22 +50,16 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <a class="btn btn-outline-warning" href="{% url 'index' %}" >Schedule</a>
     <a class="btn btn-outline-warning" href="{% url 'index' %}" >OnlineCourse</a>
     <a class="btn btn-outline-warning" href="{% url 'index' %}" >Contact</a>
-    <!-- <a href="{% url 'sachin' %}" class="btn btn-outline-warning" >Upload Workout Images</a> -->
     <form action = "search/" method ="GET"  class="form-inline my-2 my-lg-0">
         {% csrf_token %}
-        <input class="form-control mr-sm-2" type="text"   name = "find" placeholder="Search..." aria-label="Search">
+        <input class="form-control mr-sm-2" type="text"   name = "hacsac" placeholder="Search..." aria-label="Search">
         <button href="{% url 'khadka' %}" class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
-    <!-- style="background-color:#FFCC33;color:#000000;" -->
-    
+
 
 </nav>
 <br>
 
-<!-- <button class="btn"><i class="fa fa-download"></i> Download</button> -->
-
-<!-- Full width -->
-<!-- <button class="btn" style="width:100%"><i class="fa fa-download"></i> Download</button> -->
 {% block content %}
 <div class="card-columns" >
     {% for list in shelf %}
@@ -111,8 +86,8 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <div>
     {% if messages %}
     <ul class="alert alert-primary">
-      {% for k in messages %}
-      <li style ="color:rgb(19, 3, 3)"> {{ k }}</li>+
+      {% for s in messages %}
+      <li style ="color:rgb(19, 3, 3)"> {{ s }}</li>+
       
     {% endfor%}
     </ul>
@@ -121,23 +96,23 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
 <div style="color:blue">
   {% if sac %}
-     {% for k in sac %}
+     {% for s in sac %}
 <centre>
      <table border="8px" width="300px" class=" table table-dark table-borderless">
        <tr>
           <td>Workout Name</td>
-          <td>{{ k.workoutname }}</td>
+          <td>{{ s.workoutname }}</td>
        </tr> 
        <tr>
         <td>Image</td>
-        <td>{{ k.picture }}</td>
+        <td>{{ s.picture }}</td>
        </tr>  
        <tr>
         <td>Email</td>
-        <td>{{ k.email }}</td>
+        <td>{{ s.email }}</td>
        </tr>  
        <td> Workout Description </td>
-        <td>{{ k.workoutdesc }}</td>
+        <td>{{ s.workoutdesc }}</td>
        </tr>  
      </table> 
      <hr>

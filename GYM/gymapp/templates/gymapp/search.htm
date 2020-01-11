@@ -16,12 +16,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 </head>
 <body>
  <nav class="navbar navbar-light" style="background-color: #00000093; border-width:14px;border-color:rgb(88, 88, 44);border-style:groove;border-spacing:30px;border-radius:5px;"class="navbar navbar-light">
-  <!-- <a href="#" class="navbar-brand" >Library App</a> -->
-  <!-- style="background-color:#FFCC33;color:#000000;border-width:10px;border-color:#FFCC33;border-style:solid;border-spacing:30px;border-radius: 5px;" -->
-  <a class="btn btn-outline-warning" href="{% url 'index' %}" >DataFlair</a>
-  <!-- style="background-color:#FFCC33;color:#000000;" -->
-<!-- <a href="{% url 'admin:index' %}" class = 'btn btn-outline-warning' >Admin</a> -->
-<!-- style="background-color:#FFCC33;color:#000000;" -->
+
   <a class="btn btn-outline-warning" href="{% url 'index' %}" >Home</a>
   <a class="btn btn-outline-warning" href="{% url 'index' %}" >Gallery</a>
   <a class="btn btn-outline-warning" href="{% url 'index' %}" >Service</a>
@@ -34,40 +29,30 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
       <input class="form-control mr-sm-2" type="text"   name = "find" placeholder="Search..." aria-label="Search">
       <button href="{% url 'khadka' %}" class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
     </form>
-  <!-- style="background-color:#FFCC33;color:#000000;" -->
 </nav>
 
  <h3> Your Search Result: </h3> 
 
- <!-- <div>
-    {% if messages %}
-    <ul class="alert alert-primary">
-      {% for k in messages %}
-      <li style ="color:rgb(99, 109, 8)"> {{ k }}</li>
-    {% endfor%}
-    </ul>
-    {% endif%}
-  </div><br>  -->
 {% block search%}
 <div style="color:blue">
   {% if sac %}
-     {% for k in sac %}
+     {% for s in sac %}
 <centre>
      <table border="8px" width="300px" class=" table table-dark table-borderless">
        <tr>
           <td>Workout Name</td>
-          <td>{{ k.workoutname }}</td>
+          <td>{{ s.workoutname }}</td>
        </tr> 
        <tr>
         <td>Image</td>
-        <td>{{ k.picture }}</td>
+        <td>{{ s.picture }}</td>
        </tr>  
        <tr>
         <td>Email</td>
-        <td>{{ k.email }}</td>
+        <td>{{ s.email }}</td>
        </tr>  
        <td> Workout Description </td>
-        <td>{{ k.workoutdesc }}</td>
+        <td>{{ s.workoutdesc }}</td>
        </tr>  
      </table> 
      <hr>

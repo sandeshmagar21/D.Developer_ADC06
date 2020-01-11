@@ -68,7 +68,7 @@ Search Functionality
 
 def search_function_hai(request):
     if request.method =='GET':
-        finds = request.GET['find']
+        finds = request.GET['hacsac']
 
         if finds:
             match = Gym.objects.filter(Q(workoutname__icontains=finds))
