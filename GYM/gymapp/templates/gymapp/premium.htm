@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Books App</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="{%static 'style.css'%}">
+
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+<script type ="text/JavaScript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"> </script>
+<script src="{% static 'bootstrap/js/query.js' %}"> </script>
+<script src="{% static 'bootstrap/jquery/jquery.js' %}"> </script>
+
+
+</head>
+
+<body >
+
+     <style>
+        body{
+          background-color:rgb(8, 12, 12) ;
+        }
+        .navbar-brand{
+            background-color:#FFCC33;
+            color:#000000;
+            border-width:5px;
+            border-color:#FFCC33;
+            border-style:solid;
+            border-spacing:30px;
+            border-radius: 5px;
+        }
+       
+
+
+
+    </style>
+
+    
+<nav class="navbar navbar-light" style="background-color: #00000093; border-width:14px;border-color:rgb(88, 88, 44);border-style:groove;border-spacing:30px;border-radius:5px;"class="navbar navbar-light">
+    <!-- <a href="#" class="navbar-brand" >Library App</a> -->
+    <!-- style="background-color:#FFCC33;color:#000000;border-width:10px;border-color:#FFCC33;border-style:solid;border-spacing:30px;border-radius: 5px;" -->
+    <!-- <a class="btn btn-outline-warning" href="{% url 'index' %}" >DataFlair</a> done--> 
+    <!-- style="background-color:#FFCC33;color:#000000;" -->
+<!-- <a href="{% url 'admin:index' %}" class = 'btn btn-outline-warning' >Admin</a> -->
+<!-- style="background-color:#FFCC33;color:#000000;" -->
+<div class="pos-f-t">
+    <div class="dropdown-menu" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+        <a class="btn btn-outline-warning" href="{% url 'index' %}" >People Workout Images</a>
+        <a href="{% url 'sachin' %}" class="btn btn-outline-warning" >Upload Workout Images</a>
+        <a href="{% url 'admin:index' %}" class = 'btn btn-outline-warning' >Admin</a>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-yellow">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+
+
+    <a class="btn btn-outline-warning" href="{% url 'index' %}" >Home</a>
+    <a class="btn btn-outline-warning" href="{% url 'index' %}" >Gallery</a>
+    <a class="btn btn-outline-warning" href="{% url 'index' %}" >Service</a>
+    <a class="btn btn-outline-warning" href="{% url 'index' %}" >Schedule</a>
+    <a class="btn btn-outline-warning" href="{% url 'index' %}" >OnlineCourse</a>
+    <a class="btn btn-outline-warning" href="{% url 'index' %}" >Contact</a>
+    <!-- <a href="{% url 'sachin' %}" class="btn btn-outline-warning" >Upload Workout Images</a> -->
+    <form action = "search/" method ="GET"  class="form-inline my-2 my-lg-0">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="text"   name = "find" placeholder="Search..." aria-label="Search">
+        <button href="{% url 'khadka' %}" class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    <!-- style="background-color:#FFCC33;color:#000000;" -->
+    
+
+</nav>
+<br>
+
+<!-- <button class="btn"><i class="fa fa-download"></i> Download</button> -->
+
+<!-- Full width -->
+<!-- <button class="btn" style="width:100%"><i class="fa fa-download"></i> Download</button> -->
+{% block content %}
+<div class="card-columns" >
+    {% for list in shelf %}
+    <div class="card" style="background-color:rgb(88, 88, 44); width: 25rem;">
+  <img class="card-img-top" src="{{ list.picture.url }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ list.workoutname }}</h5>
+    <p class="alert alert-success" role="alert">{{ list.workoutdesc }}</p>
+   <div class="card-footer bg-transparent border-dark">
+   <p class="card-title badge badge-light alert-success">{{list.email}}</p>
+   <center>
+       <a href="update/{{list.id}}" class="btn btn-dark" id = '{{list.id}}'>Update</a>
+       <a href="delete/{{list.id}}" class="btn btn-dark" id = '{{list.id}}'>Delete</a>
+       <a href="#" class="btn btn-dark  " id = '{{list.id}}'>Download</a>
+       
+    </center>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+<div>
+    {% if messages %}
+    <ul class="alert alert-primary">
+      {% for k in messages %}
+      <li style ="color:rgb(19, 3, 3)"> {{ k }}</li>+
+      
+    {% endfor%}
+    </ul>
+    {% endif%}
+  </div><br> 
+
+<div style="color:blue">
+  {% if sac %}
+     {% for k in sac %}
+<centre>
+     <table border="8px" width="300px" class=" table table-dark table-borderless">
+       <tr>
+          <td>Workout Name</td>
+          <td>{{ k.workoutname }}</td>
+       </tr> 
+       <tr>
+        <td>Image</td>
+        <td>{{ k.picture }}</td>
+       </tr>  
+       <tr>
+        <td>Email</td>
+        <td>{{ k.email }}</td>
+       </tr>  
+       <td> Workout Description </td>
+        <td>{{ k.workoutdesc }}</td>
+       </tr>  
+     </table> 
+     <hr>
+  {% endfor %}
+  {% endif %}
+    </centre>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
