@@ -4,7 +4,7 @@ from .views import *
 from gym.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
 urlpatterns = [
-    path('', index, name = 'index'),
+    path('index', index, name = 'index'),
     path('upload/', upload, name = 'sachin'),
     path('update/<int:gym_id>', update_form),
     path('delete/<int:gym_id>', delete_form),
